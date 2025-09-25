@@ -116,3 +116,16 @@ target/
 !config_examples/config_freqai.example.json
 
 docker-compose-*.yml
+
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+
+# Logs and cache
+logs/
+user_data/data/news_cache.json
+
