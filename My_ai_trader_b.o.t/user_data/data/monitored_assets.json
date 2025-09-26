@@ -1,0 +1,8 @@
+{
+  "BTC": { "type": "crypto", "symbol": "BTC-USD" },
+  "GOLD": { "type": "commodity", "symbol": "GC=F" },
+  "CRUDE": { "type": "commodity", "symbol": "CL=F" },
+  "TCS": { "type": "stock", "symbol": "TCS.BSE" },
+  "RELIANCE": { "type": "stock", "symbol": "RELIANCE.BSE" },
+  "INFY": { "type": "stock", "symbol": "INFY.BSE" }
+}

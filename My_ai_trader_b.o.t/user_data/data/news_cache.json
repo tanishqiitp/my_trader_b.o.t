@@ -1,0 +1,170 @@
+{
+  "BTC": {
+    "symbol": "BTC",
+    "score": 0.0983,
+    "prediction": 0,
+    "reasons": [
+      "events:{'CRUDE': 1, 'GOLD': 1}",
+      "vader:0.164"
+    ],
+    "headlines": [
+      "Why Crypto Is Down Today: Bitcoin, Ethereum, Dogecoin tumble amid U.S. government shutdown fears, $1.65B liquidations, and Fed rate uncertainty. Cryptocurrency market is plunging today as Bitcoin, Ethereum, and Dogecoin face sharp losses. Growing fears of a U.S. government shutdown, rising interest rate concerns, and large institutional outflows are fueling uncertainty. Traders and investors are close…",
+      "Ethereum price dips to $3,830 as key indicator signals momentum breakdown. Ethereum fell to $3,830 on Thursday, dropping nearly 9% in 24 hours as Bitcoin dived to near $108,000. Crypto analyst IncomeSharks highlighted Ethereum price weakness amid the OBV indicator breakdown. XRP, Solana and BNB also dropped to or below key levels as…",
+      "Crypto Market Wipes Out September Gains as Bitcoin Barely Hangs On: Analysis. A brutal weekly decline has pushed the crypto market into negative territory for September, keeping the seasonal curse alive—for now.",
+      "Bitcoin Implied Volatility Hits The Floor — Is The Market Poised For Next Big Shift?. Bitcoin’s price experienced a slight upward push after a temporary rebound on Wednesday, but the leading crypto asset is still in a bearish state, now pulling back to $111,000. However, it appears BTC is likely to regain its upside momentum soon, as key on-ch…",
+      "Decoding Bitcoin’s tug-of-war at $112K as ‘fear’ grips retail. Bitcoin is edging closer to its $112K support as market sentiment slips into Fear while long-term indicators sparks cautious bullish signals,",
+      "Crypto Liquidations Top $1B as Bitcoin, Ether, Solana Selloffs Worsen. A rough early session for crypto markets took a turn for the worse in U.S. afternoon hours Thursday, with bitcoin (BTC) tumbling below $109,000, its weakest price in nearly a month.\nEther (ETH) plummeted 8% through the past 24 hours rapidly approaching $3,800…",
+      "CleanSpark Shares Are Moving Lower: What Investors Should Know. CleanSpark Inc (NASDAQ: CLSK) shares are declining on Thursday. The company announced a new $100 million Bitcoin (CRYPTO: BTC)-backed credit facility with Two Prime. Here’s what you need to know.\nWhat To Know: CleanSpark said it has expanded its capital strat…",
+      "Morgan Stanley to launch crypto asset-allocation strategy. Morgan Stanley will launch a crypto allocation strategy for client portfolios, with E*Trade adding BTC, ETH, and SOL trading in 2026.\nThe post Morgan Stanley to launch crypto asset-allocation strategy appeared first on Crypto Briefing.",
+      "Crypto Liquidations Top $1B as Bitcoin, Ether, Solana Selloffs Worsen. Strategy (MSTR) plunged as much as 10% and is now lower year-to-date.",
+      "Google Just Made Cipher Mining An AI-Crypto Hybrid Bet. Cipher Mining Inc (NASDAQ: CIFR) just landed one of the most eye-catching endorsements in crypto infrastructure: Alphabet Inc (NASDAQ: GOOGL) (NASDAQ: GOOG). Google took a 5.4% stake in the Bitcoin (CRYPTO: BTC) miner, securing roughly 24 million warrants as …"
+    ],
+    "ts": 1758915432
+  },
+  "ETH": {
+    "ts": 1758845618,
+    "score": 0.26629,
+    "headlines": [
+      "ETFs, RWAs, stablecoins ended traditional four-year cycle and alt seasons. The traditional four-year crypto cycle appears to be broken, as institutional adoption through exchange-traded funds, real-world asset tokenization, and stablecoin infrastructure reshapes market conditions. In a Sept. 24 report, the analyst identified as Igna…",
+      "Crypto Treausuries Meet ETFs in Novel Offering Before SEC. Market maker GSR included a proposal for the treasury-focused fund along with four others in a filing Wednesday.",
+      "BitMine’s Tom Lee Sees Ether Hitting $12K By Year-End, With Ethereum Emerging As Wall Street’s Favored Chain. According to Tom Lee, Ethereum has emerged as a “truly neutral chain” that he believes will be favored by Wall Street and the Trump White House.",
+      "ETH price euphoria fades, but $5K remains the end-of-year target: Analyst. Institutional demand for Ethereum contrasts with weak retail flows, while ETH must reclaim $4,580 to trigger a potential breakout, according to an analyst.",
+      "Bitcoin, XRP Lead Crypto Rebound As ETH, Dogecoin Stabilize. Cryptocurrency markets are trading higher on Wednesday, with Bitcoin stabilizing above $113,000.\nCryptocurrency\nTicker\nPrice\nBitcoin\n(CRYPTO: BTC)\n$113,651.45\nEthereum\n(CRYPTO: ETH)\n$4,170.99\nSolana\n(CRYPTO: SOL)\n$214.09\nXRP\n(CRYPTO: XRP)\n$2.95\nDogecoin\n(CRYP…",
+      "Crypto chaos: Which coins could actually boom in 2025. Experts say Bitcoin's still a safe bet, but in a market full of scams and hype, spotting crypto's next cash cow is the ultimate challenge.",
+      "Price predictions 9/24: BTC, ETH, XRP, BNB, SOL, DOGE, ADA, HYPE, LINK, AVAX. Bitcoin bulls are trying to seize control but are expected to face strong selling at $117,500. Will altcoins capitalize on BTC's potential range-bound price action?",
+      "Mutuum Finance (MUTM) Approaches Next Phase With 14.3% Price Increase After Raising $16 Million. <p class=\"sc-jegxcv powTK\"><span><strong>Dubai, UAE, September 19th, 2025, FinanceWire</strong></span></p>",
+      "How Institutional Investors Are Redefining Crypto Markets. Gracy Chen, CEO of global cryptocurrency exchange and Web3 platform, Bitget, explores how institutional investors are fundamentally reshaping crypto markets. The rise of spot Ether ETFs and scalable Ethereum Layer-2 solutions signals a structural shift in liq…",
+      "FuturoMining Launches Globally as Bitcoin Crash Triggers $1.5bn (£1.2bn) Sell-Off — Promising Daily Returns in a Green, Stable Way. As crypto markets face their worst crash since 2023, FuturoMining launches in over 100 countries, providing investors with secure, green-powered cloud mining contracts and guaranteed daily returns."
+    ]
+  },
+  "GOLD": {
+    "symbol": "GOLD",
+    "score": 0.1321,
+    "prediction": 0,
+    "reasons": [
+      "events:{'STOCK_NEGATIVE': -1}",
+      "vader:0.220"
+    ],
+    "headlines": [
+      "Allen Ginsberg, Great American Poet-Buffoon. And the lesser-known Ginsberg who preceded him",
+      "Okla. State lands No. 44 hoops recruit Montonati. Senior Jalen Montonati, the No. 44 player in the 2026 SportsCenter NEXT 100 basketball rankings, announced his commitment to Oklahoma State.",
+      "Baltimore Orioles Sell Minority Stake to Mark Ein. ",
+      "Google Asks US Supreme Court to Pause App Store Overhaul. ",
+      "FAA Extends Newark Airport Flight Reductions to October 2026. ",
+      "S. Korea to Start 24-Hour Won Trading in Globalization Push. ",
+      "The H-1B Visa Reset Will Crush America’s College Pipeline. ",
+      "Mexico’s Central Bank Trims Interest Rate to 7.50%, Continuing Easing Cycle. ",
+      "Crossborder love and pocket-sized art: Mr. B Baby celebrates Hispanic Heritage Month with mural and PRONTO card. Michelle Guerrero is known for her whimsical, colorful artwork inspired by her Puerto Rican and Mexican heritage.",
+      "Strategy EVP Sells $3.6 Million Worth of Stock Before Bitcoin-Price Slump. "
+    ],
+    "ts": 1758915435
+  },
+  "CRUDE": {
+    "symbol": "CRUDE",
+    "score": 0.1114,
+    "prediction": 0,
+    "reasons": [
+      "events:{'CRUDE': 1, 'GOLD': 1}",
+      "vader:-0.081"
+    ],
+    "headlines": [
+      "Crude Prices Recover as Russian-NATO Tensions Escalate. ",
+      "Court Throws Out Case After Finding Plaintiffs Submitted Deepfake Videos and Altered Images. The case is Mendones v. Cushman & Wakefield, Inc., decided Sept. 9 by Judge Victoria Kolakowski (Cal. Super. Ct. Alameda County).…\nThe post Court Throws Out Case After Finding Plaintiffs Submitted Deepfake Videos and Altered Images appeared first on Reason.co…",
+      "How Amgen Lost the PCSK9 Patent War. In 2014, Amgen sued Sanofi and Regeneron to claim ownership of an entire class of cholesterol drugs. Nine years later, the Supreme Court ruled against them - but they won where it mattered most.",
+      "Iraqi PM says agreed with Kurdish region to resume oil exports via Türkiye. BAGHDAD, Sept. 25 (Xinhua) -- Iraqi Prime Minister Mohammed Shia' al-Sudani on Thursday announced a deal under which the federal oil ministry will take crude produced in the semi-autonomous Kurdistan region and export it through a pipeline to Türkiye. Read fu…",
+      "Required Reading. This week: how Serbia inspired the Renaissance, an independent magazine sues ICE, Shakespeare’s enigmatic rival, audiobook narrators deserve better, the music of Palestinian tatreez, and more.",
+      "Anti-ICE gunman Joshua Jahn had ‘hatred’ for government — the very definition of ‘terrorism,” feds say. Dallas anti-ICE gunman Joshua Jahn harbored deep resentment for both immigration authorities and the federal government, and set out to inflict maximum casualties in an attack officials called \"the very definition of terrorism.\"",
+      "Gulf Countries Need to De-Risk Their Relationship with the U.S.. On 9 September, Israel attacked Qatar, a U.S. ally that was hosting a Hamas delegation that was considering a peace proposal from U.S. President Donald Trump. Israel killed three low-ranking officials, a child of a delegation member, and a Qatari security off…",
+      "Indian refiners' August crude processing drops 4.4% from a month earlier. Indian refiners experienced a 4.4% month-on-month decline in crude throughput during August, attributed to monsoon disruptions and maintenance. Despite this, refinery throughput rose 3% year-on-year. Simultaneously, India's fuel consumption hit an 11-month lo…",
+      "AI that once called itself MechaHitler will now be available to the US government for $0.42. Elon Musk's AI appears to be more ideological than competitors\nDespite protest letters, concerns that it's biased and untrustworthy, model tweaks to appease its billionaire boss, and even a past incident where it called itself \"MechaHitler,\" xAI's Grok is sti…",
+      "Episode 703: Getting Period Right, Transcript. The original post for this episode can be found here. JOHN AUGUST: Hello, and welcome. My name is John August. CRAIG MAZIN: My name’s Craig Mazin. JOHN: This is Episode 703 of Scriptnotes. It’s a podcast about screenwriting and things that are interesting to …"
+    ],
+    "ts": 1758915434
+  },
+  "RELIANCE": {
+    "symbol": "RELIANCE",
+    "score": 0.1223,
+    "prediction": 0,
+    "reasons": [
+      "vader:0.204"
+    ],
+    "headlines": [
+      "Wisconsin Planned Parenthood pauses abortions amid federal Medicaid funding cut. Planned Parenthood of Wisconsin says it will stop scheduling patients for abortions starting next week as it works to provide the service in the face of Medicaid funding cuts in President Donald Trump’s tax and spending bill",
+      "Nearshoring and reshoring: Why more businesses are moving supply chains closer to home. WSI reports businesses are increasingly reshoring and nearshoring supply chains to boost efficiency and mitigate global risks.",
+      "Expert Council Q&A – Epi-3738. Today on The Survival Podcast the expert council answers your questions on foreign policy, community, tax scammers, fun fitness questions, dog training, foraging, knives, debates and more. Make sure if you submit content for an expert council show you do the …",
+      "The U.N. utters the word: Dementia. For the first time, the United Nations has issued a political declaration pledging to address dementia. Will it make a difference?",
+      "Accelerate benefits claims processing with Amazon Bedrock Data Automation. In the benefits administration industry, claims processing is a vital operational pillar that makes sure employees and beneficiaries receive timely benefits, such as health, dental, or disability payments, while controlling costs and adhering to regulations l…",
+      "Austria military ditches Microsoft for open-source LibreOffice - here's why. It's not about the cost savings, either. Many government organizations are replacing Microsoft software for a more important reason.",
+      "Chiefs, Ravens and Texans were thought to be AFC playoff locks. Why are all 3 struggling?. Slow on offense. Porous on run defense. A messy operation. These AFC contenders have plenty of issues, and need to start fixing them quickly.",
+      "AlphaTON Capital Corp Successfully Closes $71 million Financing and Completes Initial TON Token Acquisition. AlphaTON Capital Corp Successfully Closes $71 million Financing and Completes Initial TON Token Acquisition......",
+      "Golar LNG Announces Pricing of $500 Million Offering of Senior Notes due 2030. Hamilton, Bermuda, September 25, 2025 — Golar LNG Limited (the “Company”) (Nasdaq: GLNG) today announced the pricing of a private offering (the “Offering”) of $500 million in aggregate principal amount of unsecured senior notes due 2030 (the “Notes”). The Not…",
+      "Austria military ditches Microsoft for open-source LibreOffice - here's why. It's not about the cost savings, either. Many government organizations are replacing Microsoft software for a more important reason."
+    ],
+    "ts": 1758915437
+  },
+  "TCS": {
+    "symbol": "TCS",
+    "score": 0.4215,
+    "prediction": 1,
+    "reasons": [
+      "events:{'STOCK_POSITIVE': 1, 'STOCK_NEGATIVE': -1}",
+      "vader:0.169"
+    ],
+    "headlines": [
+      "Accenture braces for slowdown and job cuts, says AI's returns ‘underwhelming’. The rise of AI is likely to lead to more job cuts, even as Accenture believes it will add more people on a net-net basis in the current fiscal year.",
+      "Tata Motors braces for a big hit as group scrambles to contain JLR hack. The company has been unable to produce and dispatch cars to its dealers since 31 August after the hack hit its digital systems. The disruption comes just five months after the company had to halt exports to the US, its biggest market, for a month due to the u…",
+      "Infosys, Wipro ADRs fall over 2% despite Accenture's upbeat FY25 revenue, EPS. Infosys and Wipro ADRs slipped after Accenture’s strong Q4 earnings beat estimates, with revenue rising 7% and AI-driven bookings boosting outlook. Despite robust growth, Accenture shares dipped 1.2%, sparking sentiment shifts across global IT stocks.",
+      "Accenture’s AI momentum underscores growth potential for Indian IT firms. Experts, however, caution that macroeconomic pressures, US outsourcing policies, and hiring slowdowns could temper near-term momentum",
+      "ET Market Watch: Sensex falls 556 pts, Nifty below 24,900; Oil pulls back, Rupee steady amid foreign outflows. The Sensex fell 556 points to 81,160, while the Nifty slid below 24,900, ending at 24,891. Financials and IT shares dragged the markets, with foreign outflows and worries over US visa rules weighing on sentiment.",
+      "US H-1B visa move to impact Indian IT cos' profit margins by only 0.20%: Crisil Intelligence. This is because the reliance of IT companies on H-1B visas has been reducing since 2018, when the denial rates for the visa applications increased to 24%, Crisil Intelligence said.",
+      "Azim Premji declines Ktka CM Siddu’s appeal to open Wipro Campus for ORR traffic relief. Wipro's Azim Premji rejects request for public vehicular access, proposes comprehensive study to address Bengaluru traffic congestion.",
+      "Azim Premji declines Ktka CM Siddu’s appeal to open Wipro Campus for ORR traffic relief. Wipro's Azim Premji rejects request for public vehicular access, proposes comprehensive study to address Bengaluru traffic congestion.",
+      "IT stocks continue to reel under pressure for 4th day on H-1B visa fee concerns. IT stocks continued to slide for the fourth day in a row on Thursday as the staggering hike in US H-1B visa fees continues to hurt investor sentiment.",
+      "IT stocks continue to reel under pressure for 4th day on H-1B visa fee concerns. IT stocks continued to slide for the fourth day in a row on Thursday as the staggering hike in US H-1B visa fees continues to hurt investor sentiment."
+    ],
+    "ts": 1758915436
+  },
+  "HDFC": {
+    "symbol": "HDFC",
+    "score": 0.3811,
+    "prediction": 1,
+    "reasons": [
+      "events:{'STOCK_POSITIVE': 1}",
+      "vader:0.368"
+    ],
+    "headlines": [
+      "Best Travel Insurance Plans in India with Flight Cancellation Benefits. Protect your travel plans with flight cancellation benefits in travel insurance for financial security and peace of mind.",
+      "Accenture Q4 revenue rises 7% on higher AI demand, above estimates. Akcenture announced its fourth-quarter revenue. The revenue surpassed Wall Street estimates. This was driven by strong demand for AI consulting. Enterprise clients are scaling up AI projects. They are digitizing operations and focusing on data security. The c…",
+      "Market Wrap: D-St extends losing run to 5th day, Sensex falls 556 points, Nifty slips below 24,900. Indian equities slid for a fifth straight session Thursday, with the Sensex and Nifty dragged lower by financial and IT shares as persistent foreign outflows and worries over U.S. visa curbs weighed on sentiment.",
+      "Travel insurance: Is it GST free now, how much can you save on your next trip?. Most experts are of the view that travel insurance premiums are now GST-exempt, offering financial relief to travelers. Effective September 22, 2025, individual health and life insurance policies, including travel covers with medical and accident benefits, ar…",
+      "How to use personal loans for shopping, travel, and home renovation during festivals. Personal loans for festival expenses help manage shopping, travel, home renovation, and gifting needs with flexible EMIs, quick approval, and smart borrowing tips to celebrate stress-free without straining savings.",
+      "As digital arrests rise, Parliament panel pitches a plan to hunt down cyber cons. With online financial frauds on the rise, a parliamentary panel has recommended bold steps to protect individuals and fight cyber fraudsters. Implementation, however, could be tricky.",
+      "Advance AgroLife IPO to open on Sep 30; price band set at Rs 95-Rs 100/share. Advance Agrolife Limited is launching its IPO. The price is set between Rs 95 and Rs 100 per share. The IPO will open on September 30 and close on October 3. The company aims to raise Rs 193 crore through this initial share sale. The raised capital will suppo…",
+      "Sensex, Nifty slip below key levels as selling pressure intensifies. Benchmark indices slide below 25,000 as selling pressure mounts, Nifty Bank resilient, Tata Motors leads losers.",
+      "A digital platform for insurance is a visionary step, but the wait is long. Unlike private online brokerage platforms such as Policybazaar or InsuranceDekho, Bima Sugam is a non-profit, industry-owned platform. It will not be driven by profitability or product push, but by penetration and accessibility.",
+      "Park Avenue Securities LLC Purchases Shares of 29,117 HDFC Bank Limited $HDB. Park Avenue Securities LLC acquired a new position in shares of HDFC Bank Limited (NYSE:HDB – Free Report) in the 2nd quarter, according to the company in its most recent 13F filing with the SEC. The fund acquired 29,117 shares of the bank’s stock, valued at …"
+    ],
+    "ts": 1758901220
+  },
+  "INFY": {
+    "symbol": "INFY",
+    "score": 0.4077,
+    "prediction": 1,
+    "reasons": [
+      "vader:0.680"
+    ],
+    "headlines": [
+      "Share Market Highlights 22 Sept 2025: Sensex, Nifty slip as IT stocks sink on US H-1B visa fee shock. Sensex, Nifty updates on 22 Sept 2025: Indian equity benchmarks ended lower on Monday, led by a sharp sell-off in information technology stocks after the U.S. announced a steep $100,000 fee on new H-1B visa applications. The Sensex fell 466 points, or 0.56%, …",
+      "Infosys, HanesBrands Announce 10-Year AI-Driven Strategic Alliance. Infosys Limited (NYSE:INFY) is one of the best growth stocks under $30 to buy. On September 11, Infosys and HanesBrands Inc. (NYSE:HBI) announced a strategic...",
+      "These Stocks to Buy Will Benefit From a Fed Rate Cut... Including This 1 Surprise Tech Stock Yielding 3%. As expected, the Fed has lowered rates by 25 basis points at its September meeting. Here are the stocks to buy after the rate cut.",
+      "20,783 Shares in American Noble Gas Inc. $INFY Purchased by Modern Wealth Management LLC. Modern Wealth Management LLC acquired a new position in American Noble Gas Inc. (NYSE:INFY – Free Report) during the first quarter, according to its most recent 13F filing with the SEC. The firm acquired 20,783 shares of the technology company’s stock, valued…",
+      "Why NDQ ETF and these ASX ETFs could be strong buys. These funds give investors access to some of the strongest businesses in the world.\nThe post Why NDQ ETF and these ASX ETFs could be strong buys appeared first on The Motley Fool Australia.",
+      "Infosys ₹18,000-cr buyback signals confidence, say brokerages. The buyback, covering 10 crore shares or 2.41% of equity, marks the company’s fifth such programme, following previous repurchases worth ₹39,760 crore.",
+      "Redburn Atlantic Initiates Coverage on Infosys (INFY) With a Sell Rating. Infosys (NYSE:INFY) is one of the best growth stocks under $50 to buy now. In a report released on September 3, Harry Read from Redburn Atlantic initiated coverage on Infosys (NYSE:INFY) with a Sell rating and a price target of $12.00.\nIn other news, Infosys …",
+      "Redburn Atlantic Initiates Coverage on Infosys (INFY) With a Sell Rating. Infosys (NYSE:INFY) is one of the best growth stocks under $50 to buy now. In a report released on September 3, Harry Read from Redburn Atlantic initiated...",
+      "Share Market Highlights: Sensex rises 124 points, Nifty reclaims 25,000 despite rupee hitting record low. Sensex, Nifty updates on 11 September 2025: The benchmark indices ended higher on Thursday, extending their winning run, buoyed by global market optimism and hopes of a US Federal Reserve rate cut. The BSE Sensex gained 123.58 points, or 0.15 per cent, to clo…",
+      "Tax threat to Indian IT; Infy weighs buyback. A US proposal to tax offshoring has sent jitters through already troubled Indian IT. This and more in today’s ETtech Top 5."
+    ],
+    "ts": 1758915438
+  }
+}

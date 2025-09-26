@@ -1,0 +1,33 @@
+# ---- Python / Environment ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+.env
+*.env
+
+# ---- Freqtrade Specific ----
+# Ignore logs, cache, backtest results
+logs/
+backtest_results/
+freqtrade.log
+*.sqlite
+*.db
+
+# Ignore downloaded market data cache
+user_data/data/market_data/
+
+# But DO NOT ignore your custom strategy/data code
+!user_data/
+!user_data/data/
+!user_data/data/*.py
+!user_data/strategies/
+!user_data/strategies/*.py
+
+# ---- OS / Editor Files ----
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
