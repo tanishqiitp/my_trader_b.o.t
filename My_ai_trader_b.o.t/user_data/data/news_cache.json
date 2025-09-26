@@ -1,13 +1,15 @@
 {
   "BTC": {
     "symbol": "BTC",
-    "score": 0.0983,
+    "score": 0.0704,
     "prediction": 0,
     "reasons": [
       "events:{'CRUDE': 1, 'GOLD': 1}",
-      "vader:0.164"
+      "vader:0.117"
     ],
     "headlines": [
+      "Scilex Holding Company Announces $150 Million Strategic Bitcoin Investment in Datavault AI. PALO ALTO, Calif., Sept. 25, 2025 (GLOBE NEWSWIRE) -- Scilex Holding Company (“Scilex” or the “Company”) (Nasdaq: SCLX), an innovative revenue-generating company focused on acquiring, developing and commercializing non-opioid pain management products for the …",
+      "Bitcoin Slides Below $110,000 As Ethereum, XRP, Dogecoin Drop Over 5% On $1 Billion In Liquidations. Crypto markets took a sharp hit on Thursday, with Bitcoin falling below $110,000.\nCryptocurrency\nTicker\nPrice\nBitcoin\n(CRYPTO: BTC)\n$109,979.89\nEthereum\n(CRYPTO: ETH)\n$3,938.55\nSolana\n(CRYPTO: SOL)\n$199.94\nXRP\n(CRYPTO: XRP)\n$2.80\nDogecoin\n(CRYPTO: DOGE)\n$0.22…",
       "Why Crypto Is Down Today: Bitcoin, Ethereum, Dogecoin tumble amid U.S. government shutdown fears, $1.65B liquidations, and Fed rate uncertainty. Cryptocurrency market is plunging today as Bitcoin, Ethereum, and Dogecoin face sharp losses. Growing fears of a U.S. government shutdown, rising interest rate concerns, and large institutional outflows are fueling uncertainty. Traders and investors are close…",
       "Ethereum price dips to $3,830 as key indicator signals momentum breakdown. Ethereum fell to $3,830 on Thursday, dropping nearly 9% in 24 hours as Bitcoin dived to near $108,000. Crypto analyst IncomeSharks highlighted Ethereum price weakness amid the OBV indicator breakdown. XRP, Solana and BNB also dropped to or below key levels as…",
       "Crypto Market Wipes Out September Gains as Bitcoin Barely Hangs On: Analysis. A brutal weekly decline has pushed the crypto market into negative territory for September, keeping the seasonal curse alive—for now.",
@@ -15,11 +17,9 @@
       "Decoding Bitcoin’s tug-of-war at $112K as ‘fear’ grips retail. Bitcoin is edging closer to its $112K support as market sentiment slips into Fear while long-term indicators sparks cautious bullish signals,",
       "Crypto Liquidations Top $1B as Bitcoin, Ether, Solana Selloffs Worsen. A rough early session for crypto markets took a turn for the worse in U.S. afternoon hours Thursday, with bitcoin (BTC) tumbling below $109,000, its weakest price in nearly a month.\nEther (ETH) plummeted 8% through the past 24 hours rapidly approaching $3,800…",
       "CleanSpark Shares Are Moving Lower: What Investors Should Know. CleanSpark Inc (NASDAQ: CLSK) shares are declining on Thursday. The company announced a new $100 million Bitcoin (CRYPTO: BTC)-backed credit facility with Two Prime. Here’s what you need to know.\nWhat To Know: CleanSpark said it has expanded its capital strat…",
-      "Morgan Stanley to launch crypto asset-allocation strategy. Morgan Stanley will launch a crypto allocation strategy for client portfolios, with E*Trade adding BTC, ETH, and SOL trading in 2026.\nThe post Morgan Stanley to launch crypto asset-allocation strategy appeared first on Crypto Briefing.",
-      "Crypto Liquidations Top $1B as Bitcoin, Ether, Solana Selloffs Worsen. Strategy (MSTR) plunged as much as 10% and is now lower year-to-date.",
-      "Google Just Made Cipher Mining An AI-Crypto Hybrid Bet. Cipher Mining Inc (NASDAQ: CIFR) just landed one of the most eye-catching endorsements in crypto infrastructure: Alphabet Inc (NASDAQ: GOOGL) (NASDAQ: GOOG). Google took a 5.4% stake in the Bitcoin (CRYPTO: BTC) miner, securing roughly 24 million warrants as …"
+      "Morgan Stanley to launch crypto asset-allocation strategy. Morgan Stanley will launch a crypto allocation strategy for client portfolios, with E*Trade adding BTC, ETH, and SOL trading in 2026.\nThe post Morgan Stanley to launch crypto asset-allocation strategy appeared first on Crypto Briefing."
     ],
-    "ts": 1758915432
+    "ts": 1758916814
   },
   "ETH": {
     "ts": 1758845618,
@@ -39,35 +39,36 @@
   },
   "GOLD": {
     "symbol": "GOLD",
-    "score": 0.1321,
+    "score": 0.1435,
     "prediction": 0,
     "reasons": [
-      "events:{'STOCK_NEGATIVE': -1}",
-      "vader:0.220"
+      "vader:0.239"
     ],
     "headlines": [
-      "Allen Ginsberg, Great American Poet-Buffoon. And the lesser-known Ginsberg who preceded him",
-      "Okla. State lands No. 44 hoops recruit Montonati. Senior Jalen Montonati, the No. 44 player in the 2026 SportsCenter NEXT 100 basketball rankings, announced his commitment to Oklahoma State.",
-      "Baltimore Orioles Sell Minority Stake to Mark Ein. ",
-      "Google Asks US Supreme Court to Pause App Store Overhaul. ",
-      "FAA Extends Newark Airport Flight Reductions to October 2026. ",
-      "S. Korea to Start 24-Hour Won Trading in Globalization Push. ",
-      "The H-1B Visa Reset Will Crush America’s College Pipeline. ",
-      "Mexico’s Central Bank Trims Interest Rate to 7.50%, Continuing Easing Cycle. ",
-      "Crossborder love and pocket-sized art: Mr. B Baby celebrates Hispanic Heritage Month with mural and PRONTO card. Michelle Guerrero is known for her whimsical, colorful artwork inspired by her Puerto Rican and Mexican heritage.",
-      "Strategy EVP Sells $3.6 Million Worth of Stock Before Bitcoin-Price Slump. "
+      "These super sleek iPhone Air frame cases with clear backplates just dropped to $10 Prime shipped. These ultra-affordable JETech cases for iPhone Air just caught my, not just because they are on sale for only $10 Prime shipped right now, but also just because of sleek and stealthy they are. While they were already a super affordable option when they debute…",
+      "Is This the Last Bubble?. The consensus holds there will be another bubble after the Everything Bubble pops, but this might be misplaced confidence in the godlike powers of central banks. The consensus holds that central banks–the Federal Reserve in the US–will gradually inflate away …",
+      "‘Lambo Guy’ Adrian Portelli Buys $6.5M Koenigsegg Jesko. Australian entrepreneur and high-profile car collector Adrian Portelli has made headlines once again, this time for acquiring a rare $6.5 million Koenigsegg ...",
+      "At Rs 1.4L/kg, silver records new high, up 59% this year. Silver prices in India soared to a record high, surpassing Rs 1.40 lakh/kg, driven by international prices exceeding $45/ounce and a weaker rupee. This surge in the white metal contrasts with a slight softening of gold prices domestically, influenced by globa…",
+      "Buying Guide 2025- Pills to Increase Sex Drive Female 2025 -Start Your Libido Life Today with Oh yes. Women’s wellness just reached a new level with the launch of the upgraded Oh Yes instant female arousal pills over the counter. This enhanced formula is designed to provide faster, more powerful, and longer-lasting effects, helping women embrace intimacy with…",
+      "Celtics salute winning tradition with 'Gold Standard' City Edition uniforms. The Celtics' 2025-26 City Edition uniform is the franchise's first uniform to not feature green.",
+      "Rivalry uniforms for Cardinals, Dolphins top NFL Week 4 threads. The NFL's Rivalry uniform series officially takes the field this week with the Arizona Cardinals and Miami Dolphins.",
+      "Confused on Which Cooking Oil You Should Be Using? A Chef Explains. Choosing the right cooking oil can make (or break) your dish. Here's how to pick the right one for your next meal.",
+      "Top Security Executives Recognized at the 2025 BayAreaCISO ORBIE Awards. Leading CISOs honored for leadership, security, and business impact. ......",
+      "Dallas turns on Micah Parsons on his return to AT&T Stadium with the Packers: \"You're going to get booed\". It seems that the return of Micah Parsons to Dallas will not be like in fairy tales. Prior to the meeting with the Packers, the Cowboys fans would receive their former star linebac"
     ],
-    "ts": 1758915435
+    "ts": 1758916818
   },
   "CRUDE": {
     "symbol": "CRUDE",
-    "score": 0.1114,
+    "score": 0.092,
     "prediction": 0,
     "reasons": [
       "events:{'CRUDE': 1, 'GOLD': 1}",
-      "vader:-0.081"
+      "vader:-0.113"
     ],
     "headlines": [
+      "Oil Swings as NATO and Russian Tensions Escalate. Oil prices seesawed as NATO warned Russia against further airspace violations and traders balanced risks with oversupply forecasts.",
+      "Economics & Investing For Preppers. Here are the latest news items and commentary on current economics news, market trends, stocks, investing opportunities, and the precious metals markets. In this column, JWR also covers hedges, derivatives, and various obscura. This column emphasizes JWR’s “t…",
       "Crude Prices Recover as Russian-NATO Tensions Escalate. ",
       "Court Throws Out Case After Finding Plaintiffs Submitted Deepfake Videos and Altered Images. The case is Mendones v. Cushman & Wakefield, Inc., decided Sept. 9 by Judge Victoria Kolakowski (Cal. Super. Ct. Alameda County).…\nThe post Court Throws Out Case After Finding Plaintiffs Submitted Deepfake Videos and Altered Images appeared first on Reason.co…",
       "How Amgen Lost the PCSK9 Patent War. In 2014, Amgen sued Sanofi and Regeneron to claim ownership of an entire class of cholesterol drugs. Nine years later, the Supreme Court ruled against them - but they won where it mattered most.",
@@ -75,32 +76,30 @@
       "Required Reading. This week: how Serbia inspired the Renaissance, an independent magazine sues ICE, Shakespeare’s enigmatic rival, audiobook narrators deserve better, the music of Palestinian tatreez, and more.",
       "Anti-ICE gunman Joshua Jahn had ‘hatred’ for government — the very definition of ‘terrorism,” feds say. Dallas anti-ICE gunman Joshua Jahn harbored deep resentment for both immigration authorities and the federal government, and set out to inflict maximum casualties in an attack officials called \"the very definition of terrorism.\"",
       "Gulf Countries Need to De-Risk Their Relationship with the U.S.. On 9 September, Israel attacked Qatar, a U.S. ally that was hosting a Hamas delegation that was considering a peace proposal from U.S. President Donald Trump. Israel killed three low-ranking officials, a child of a delegation member, and a Qatari security off…",
-      "Indian refiners' August crude processing drops 4.4% from a month earlier. Indian refiners experienced a 4.4% month-on-month decline in crude throughput during August, attributed to monsoon disruptions and maintenance. Despite this, refinery throughput rose 3% year-on-year. Simultaneously, India's fuel consumption hit an 11-month lo…",
-      "AI that once called itself MechaHitler will now be available to the US government for $0.42. Elon Musk's AI appears to be more ideological than competitors\nDespite protest letters, concerns that it's biased and untrustworthy, model tweaks to appease its billionaire boss, and even a past incident where it called itself \"MechaHitler,\" xAI's Grok is sti…",
-      "Episode 703: Getting Period Right, Transcript. The original post for this episode can be found here. JOHN AUGUST: Hello, and welcome. My name is John August. CRAIG MAZIN: My name’s Craig Mazin. JOHN: This is Episode 703 of Scriptnotes. It’s a podcast about screenwriting and things that are interesting to …"
+      "Indian refiners' August crude processing drops 4.4% from a month earlier. Indian refiners experienced a 4.4% month-on-month decline in crude throughput during August, attributed to monsoon disruptions and maintenance. Despite this, refinery throughput rose 3% year-on-year. Simultaneously, India's fuel consumption hit an 11-month lo…"
     ],
-    "ts": 1758915434
+    "ts": 1758916816
   },
   "RELIANCE": {
     "symbol": "RELIANCE",
-    "score": 0.1223,
+    "score": 0.1445,
     "prediction": 0,
     "reasons": [
-      "vader:0.204"
+      "vader:0.241"
     ],
     "headlines": [
+      "Is This the Last Bubble?. The consensus holds there will be another bubble after the Everything Bubble pops, but this might be misplaced confidence in the godlike powers of central banks. The consensus holds that central banks–the Federal Reserve in the US–will gradually inflate away …",
+      "Brown Financials LLC Celebrates Five Years Empowering Small Businesses. The company blends flexible financing with practical training, enabling owners to meet payroll, invest in growth, and expand into new locations.",
+      "Scilex Holding Company Announces $150 Million Strategic Bitcoin Investment in Datavault AI. PALO ALTO, Calif., Sept. 25, 2025 (GLOBE NEWSWIRE) -- Scilex Holding Company (“Scilex” or the “Company”) (Nasdaq: SCLX), an innovative revenue-generating company focused on acquiring, developing and commercializing non-opioid pain management products for the …",
       "Wisconsin Planned Parenthood pauses abortions amid federal Medicaid funding cut. Planned Parenthood of Wisconsin says it will stop scheduling patients for abortions starting next week as it works to provide the service in the face of Medicaid funding cuts in President Donald Trump’s tax and spending bill",
       "Nearshoring and reshoring: Why more businesses are moving supply chains closer to home. WSI reports businesses are increasingly reshoring and nearshoring supply chains to boost efficiency and mitigate global risks.",
       "Expert Council Q&A – Epi-3738. Today on The Survival Podcast the expert council answers your questions on foreign policy, community, tax scammers, fun fitness questions, dog training, foraging, knives, debates and more. Make sure if you submit content for an expert council show you do the …",
       "The U.N. utters the word: Dementia. For the first time, the United Nations has issued a political declaration pledging to address dementia. Will it make a difference?",
       "Accelerate benefits claims processing with Amazon Bedrock Data Automation. In the benefits administration industry, claims processing is a vital operational pillar that makes sure employees and beneficiaries receive timely benefits, such as health, dental, or disability payments, while controlling costs and adhering to regulations l…",
       "Austria military ditches Microsoft for open-source LibreOffice - here's why. It's not about the cost savings, either. Many government organizations are replacing Microsoft software for a more important reason.",
-      "Chiefs, Ravens and Texans were thought to be AFC playoff locks. Why are all 3 struggling?. Slow on offense. Porous on run defense. A messy operation. These AFC contenders have plenty of issues, and need to start fixing them quickly.",
-      "AlphaTON Capital Corp Successfully Closes $71 million Financing and Completes Initial TON Token Acquisition. AlphaTON Capital Corp Successfully Closes $71 million Financing and Completes Initial TON Token Acquisition......",
-      "Golar LNG Announces Pricing of $500 Million Offering of Senior Notes due 2030. Hamilton, Bermuda, September 25, 2025 — Golar LNG Limited (the “Company”) (Nasdaq: GLNG) today announced the pricing of a private offering (the “Offering”) of $500 million in aggregate principal amount of unsecured senior notes due 2030 (the “Notes”). The Not…",
-      "Austria military ditches Microsoft for open-source LibreOffice - here's why. It's not about the cost savings, either. Many government organizations are replacing Microsoft software for a more important reason."
+      "Chiefs, Ravens and Texans were thought to be AFC playoff locks. Why are all 3 struggling?. Slow on offense. Porous on run defense. A messy operation. These AFC contenders have plenty of issues, and need to start fixing them quickly."
     ],
-    "ts": 1758915437
+    "ts": 1758916823
   },
   "TCS": {
     "symbol": "TCS",
@@ -122,7 +121,7 @@
       "IT stocks continue to reel under pressure for 4th day on H-1B visa fee concerns. IT stocks continued to slide for the fourth day in a row on Thursday as the staggering hike in US H-1B visa fees continues to hurt investor sentiment.",
       "IT stocks continue to reel under pressure for 4th day on H-1B visa fee concerns. IT stocks continued to slide for the fourth day in a row on Thursday as the staggering hike in US H-1B visa fees continues to hurt investor sentiment."
     ],
-    "ts": 1758915436
+    "ts": 1758916821
   },
   "HDFC": {
     "symbol": "HDFC",
@@ -165,6 +164,6 @@
       "Share Market Highlights: Sensex rises 124 points, Nifty reclaims 25,000 despite rupee hitting record low. Sensex, Nifty updates on 11 September 2025: The benchmark indices ended higher on Thursday, extending their winning run, buoyed by global market optimism and hopes of a US Federal Reserve rate cut. The BSE Sensex gained 123.58 points, or 0.15 per cent, to clo…",
       "Tax threat to Indian IT; Infy weighs buyback. A US proposal to tax offshoring has sent jitters through already troubled Indian IT. This and more in today’s ETtech Top 5."
     ],
-    "ts": 1758915438
+    "ts": 1758916825
   }
 }
