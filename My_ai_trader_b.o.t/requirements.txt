@@ -1,0 +1,7 @@
+requests
+yfinance
+pandas
+vaderSentiment
+fastapi
+uvicorn
+streamlit
