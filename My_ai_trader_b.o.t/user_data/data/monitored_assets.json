@@ -1,8 +1,37 @@
 {
-  "BTC": { "type": "crypto", "symbol": "BTC-USD" },
-  "GOLD": { "type": "commodity", "symbol": "GC=F" },
-  "CRUDE": { "type": "commodity", "symbol": "CL=F" },
-  "TCS": { "type": "stock", "symbol": "TCS.BSE" },
-  "RELIANCE": { "type": "stock", "symbol": "RELIANCE.BSE" },
-  "INFY": { "type": "stock", "symbol": "INFY.BSE" }
+  "HDFCBANK": {
+    "type": "stock",
+    "symbol": "HDFCBANK.NS",
+    "name": "HDFC Bank",
+    "aliases": ["HDFCBANK", "HDFC Bank", "HDFC Bank stock"],
+    "source": "default"
+  },
+  "INFY": {
+    "type": "stock",
+    "symbol": "INFY.NS",
+    "name": "Infosys",
+    "aliases": ["INFY", "Infosys", "Infosys stock"],
+    "source": "default"
+  },
+  "RELIANCE": {
+    "type": "stock",
+    "symbol": "RELIANCE.NS",
+    "name": "Reliance Industries",
+    "aliases": ["RELIANCE", "Reliance Industries", "RIL", "Reliance stock"],
+    "source": "default"
+  },
+  "SBIN": {
+    "type": "stock",
+    "symbol": "SBIN.NS",
+    "name": "State Bank of India",
+    "aliases": ["SBIN", "State Bank of India", "SBI stock"],
+    "source": "default"
+  },
+  "TCS": {
+    "type": "stock",
+    "symbol": "TCS.NS",
+    "name": "Tata Consultancy Services",
+    "aliases": ["TCS", "Tata Consultancy Services", "TCS stock"],
+    "source": "default"
+  }
 }

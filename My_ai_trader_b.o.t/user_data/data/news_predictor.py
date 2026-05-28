@@ -1,196 +1,387 @@
-# user_data/data/news_predictor.py
-"""
-News-based directional predictor for commodities, crypto, and NIFTY50 stocks.
+"""Hybrid stock recommendation engine driven by market news.
 
-Returns:
-    get_news_prediction(symbol) -> dict {
-        "symbol": "RELIANCE",
-        "score": 0.23,             # combined numeric score (sentiment + event boost)
-        "prediction": 1,          # 1 => predict up next day, -1 => predict down next day, 0 => neutral
-        "reasons": ["OPEC cut keywords found", "VADER positive 0.18"],
-        "headlines": [... up to 10 headlines ...]
-    }
+The public entry points are:
+    get_news_prediction(symbol_key) -> one stock/asset signal
+    analyze_watchlist(watchlist) -> grouped TO_BUY/HOLD/SELL dashboard data
+
+Rules and VADER sentiment are always available. A trained ML classifier and a
+FinBERT DL sentiment backend can be layered in when their dependencies/models
+are installed.
 """
 
+import hashlib
+import json
+import logging
+import os
+import re
+import time
+from typing import Any, Dict, List, Optional
 
-import os, time, json, logging, re
-from typing import List, Dict, Any
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-import requests
-import feedparser
-from .news_sentiment import fetch_headlines_newsapi
-from .news_sentiment import fetch_headlines_newsapi, fetch_headlines_rss, score_texts, _read_cache, _write_cache, CACHE_TTL
+
+from .news_sentiment import (
+    CACHE_TTL,
+    _read_cache,
+    _write_cache,
+    fetch_headlines_newsapi,
+    fetch_headlines_rss,
+    score_texts,
+)
+from .ml_signal import predict_news_action_ml, score_news_with_finbert
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
+ASSETS_FILE = os.path.join(os.path.dirname(__file__), "monitored_assets.json")
+ENGINE_VERSION = "hybrid-news-v3"
+
+ACTION_TO_BUY = "TO_BUY"
+ACTION_HOLD = "HOLD"
+ACTION_SELL = "SELL"
+ACTIONS = (ACTION_TO_BUY, ACTION_HOLD, ACTION_SELL)
+MODEL_MODES = {"rules", "ml", "dl", "hybrid"}
+
 analyzer = SentimentIntensityAnalyzer()
 
-# Configure monitored sets
-# NOTE: adjust aliases/names to match common news usage
-import json
-import os
 
-ASSETS_FILE = os.path.join(os.path.dirname(__file__), "monitored_assets.json")
+def load_monitored_assets() -> Dict[str, Dict[str, Any]]:
+    with open(ASSETS_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
 
-# Load monitored assets dynamically
-with open(ASSETS_FILE, "r", encoding="utf-8") as f:
-    MONITORED = json.load(f)
 
-def get_monitored_assets():
-    """Return list of available assets dynamically from JSON."""
+MONITORED = load_monitored_assets()
+
+
+def refresh_monitored_assets() -> Dict[str, Dict[str, Any]]:
+    """Reload monitored assets after dashboard/API watchlist edits."""
+    global MONITORED
+    MONITORED = load_monitored_assets()
+    return MONITORED
+
+
+def get_monitored_assets() -> List[str]:
     return list(MONITORED.keys())
 
 
-# Event keywords and their directional effect per asset group
-# value: +1 for bullish, -1 for bearish, 0 for neutral
-EVENT_KEYWORDS = [
-    # For crude/oil: geopolitical events that push price up
-    (r"\bopec\b|\bproduction cut\b|\bcut production\b|\bexport ban\b|\boil embargo\b|\boil sanctions\b|\boil supply cut\b", {"CRUDE": 1}),
-    (r"\bsanction\b|\bembargo\b|\boil supply cut\b|\bblockade\b|\bwar\b|\binvasion\b", {"CRUDE": 1, "GOLD": 1}),  # war/sanctions -> oil/gold up
-    # Geopolitical easing -> crude down
-    (r"\bceasefire\b|\bpeace accord\b|\bdeal reached\b|\bproduction increase\b|\bboost production\b", {"CRUDE": -1}),
-    # For gold: flight-to-safety keywords
-    (r"\bmarket panic\b|\brecession\b|\binflation spike\b|\bflight to safety\b|\bbank run\b", {"GOLD": 1}),
-    # For stocks: earnings/contract news
-    (r"\b(q[1-4] results|quarterly results|beats estimates|beats expectations|missed estimates|disappointing results|beat expectations)\b",
-     {"STOCK_POSITIVE": 1, "STOCK_NEGATIVE": -1}),
-    # Company wins major contract or large order -> positive
-    (r"\bwon contract\b|\bsecured contract\b|\bawarded contract\b|\bwon deal\b|\bstrategic partnership\b|\bbagged\b", {"STOCK_POSITIVE": 1}),
-    # Mergers, regulatory fines -> negative for companies
-    (r"\bfine\b|\bpenalty\b|\binvestigation\b|\brecall\b|\blawsuit\b", {"STOCK_NEGATIVE": -1}),
+# Company-specific and broad market events. These are intentionally explicit so
+# users can understand why a stock moved into TO_BUY/HOLD/SELL.
+BULLISH_PATTERNS = [
+    r"\bbeats estimates\b",
+    r"\bbeats expectations\b",
+    r"\brecord profit\b",
+    r"\bprofit jumps\b",
+    r"\brevenue rises\b",
+    r"\bstrong demand\b",
+    r"\bupgrade[sd]?\b",
+    r"\btarget price raised\b",
+    r"\bwon (a )?(large |major |multi[- ]year )?contract\b",
+    r"\bsecured (a )?(large |major |multi[- ]year )?(order|contract|deal)\b",
+    r"\bbagged (a )?(large |major )?(order|contract|deal)\b",
+    r"\bstrategic partnership\b",
+    r"\bshare buyback\b",
+    r"\bdividend\b",
+    r"\bexpansion\b",
+    r"\bnew order\b",
+    r"\bapproval\b",
 ]
 
-# Cache storage path (re-using news_cache in the other module)
-CACHE_FILE = os.path.join(os.path.dirname(__file__), "news_cache.json")
+BEARISH_PATTERNS = [
+    r"\bmisses estimates\b",
+    r"\bmissed estimates\b",
+    r"\bprofit falls\b",
+    r"\bloss widens\b",
+    r"\brevenue declines\b",
+    r"\bdowngrade[sd]?\b",
+    r"\btarget price cut\b",
+    r"\bfine\b",
+    r"\bpenalty\b",
+    r"\binvestigation\b",
+    r"\blawsuit\b",
+    r"\bdefault\b",
+    r"\bfraud\b",
+    r"\bregulatory action\b",
+    r"\bweak demand\b",
+    r"\bstrike\b",
+    r"\bresigns\b",
+    r"\brecall\b",
+]
 
-def _get_headlines_for_query(query: str, use_newsapi=True, max_items=25) -> List[str]:
-    """Try NewsAPI first if key present, otherwise fallback to Google News RSS."""
+
+def _asset_config(symbol_key: str, assets: Optional[Dict[str, Dict[str, Any]]] = None) -> Dict[str, Any]:
+    assets = assets or MONITORED
+    key = symbol_key.upper().strip()
+    if key not in assets:
+        raise KeyError(f"{key} is not in the monitored list")
+    return assets[key]
+
+
+def _query_for_asset(symbol_key: str, config: Dict[str, Any]) -> str:
+    aliases = config.get("aliases") or []
+    name = config.get("name")
+    symbol = config.get("symbol")
+    query_parts = [symbol_key]
+    if name:
+        query_parts.append(name)
+    if symbol:
+        query_parts.append(str(symbol).replace(".NS", "").replace(".BO", ""))
+    query_parts.extend(aliases)
+
+    seen = set()
+    cleaned = []
+    for part in query_parts:
+        value = str(part).strip()
+        if value and value.lower() not in seen:
+            seen.add(value.lower())
+            cleaned.append(value)
+    return " OR ".join(cleaned)
+
+
+def _get_headlines_for_query(query: str, use_newsapi: bool = True, max_items: int = 25) -> List[str]:
+    """Try NewsAPI first when configured, otherwise fallback to Google News RSS."""
     api_key = os.environ.get("NEWSAPI_KEY")
-    headlines = []
+    headlines: List[str] = []
     if use_newsapi and api_key:
         try:
             headlines = fetch_headlines_newsapi(query, api_key, page_size=max_items)
-        except Exception as e:
-            logger.warning("NewsAPI fetch failed for '%s': %s", query, e)
-            headlines = []
+        except Exception as exc:
+            logger.warning("NewsAPI fetch failed for '%s': %s", query, exc)
+
     if not headlines:
         try:
             headlines = fetch_headlines_rss(query, max_items)
-        except Exception as e:
-            logger.warning("RSS fetch failed for '%s': %s", query, e)
-            headlines = []
+        except Exception as exc:
+            logger.warning("RSS fetch failed for '%s': %s", query, exc)
     return headlines
 
-def detect_events_in_texts(texts: List[str]) -> Dict[str, int]:
-    """
-    Returns a dict of detected event signals aggregated:
-      'CRUDE': score, 'GOLD': score, 'STOCK_POSITIVE': count, 'STOCK_NEGATIVE': count
-    """
-    agg = {}
-    txt = " ".join(texts).lower()
-    for pattern, effects in EVENT_KEYWORDS:
-        if re.search(pattern, txt, re.IGNORECASE):
-            for k, v in effects.items():
-                agg[k] = agg.get(k, 0) + v
-    return agg
 
-def compute_combined_score(sentiment_score: float, event_agg: Dict[str, int], symbol_key: str) -> float:
-    """
-    Combine VADER sentiment (float in [-1,1]) and event signals into a single score.
-    We weigh event signals higher for commodities (fast-moving).
-    """
-    base = sentiment_score
-    event_score = 0.0
-    # weight rules
-    commodity_weight = 0.6
-    stock_weight = 0.4
-    # CRUDE/GOLD direct events:
-    if symbol_key == "CRUDE":
-        event_score += celebrity_event_value(event_agg.get("CRUDE", 0)) * commodity_weight
-        event_score += celebrity_event_value(event_agg.get("GOLD", 0)) * 0.2  # cross-effect
-    elif symbol_key == "GOLD":
-        event_score += celebrity_event_value(event_agg.get("GOLD", 0)) * commodity_weight
-        event_score += celebrity_event_value(event_agg.get("CRUDE", 0)) * 0.2
-    else:
-        # for stocks: evaluate STOCK_POSITIVE/NEGATIVE
-        sp = event_agg.get("STOCK_POSITIVE", 0)
-        sn = event_agg.get("STOCK_NEGATIVE", 0)
-        event_score += (sp - sn) * stock_weight
+def _pattern_hits(text: str, patterns: List[str]) -> List[str]:
+    hits = []
+    for pattern in patterns:
+        if re.search(pattern, text, re.IGNORECASE):
+            hits.append(pattern)
+    return hits
 
-    # final weighted sum
-    # normalize sentiment contribution to moderate effect
-    return 0.6 * base + 0.4 * event_score
 
-def celebrity_event_value(v: int) -> float:
-    """
-    Convert event count to normalized value, capped.
-    """
-    if v == 0:
-        return 0.0
-    # simple scaling: each event occurrence contributes 0.5
-    return max(-2.0, min(2.0, v * 0.5))
+def detect_stock_events(headlines: List[str]) -> Dict[str, Any]:
+    joined = " ".join(headlines).lower()
+    bullish_hits = _pattern_hits(joined, BULLISH_PATTERNS)
+    bearish_hits = _pattern_hits(joined, BEARISH_PATTERNS)
+    return {
+        "bullish_count": len(bullish_hits),
+        "bearish_count": len(bearish_hits),
+        "bullish_patterns": bullish_hits[:5],
+        "bearish_patterns": bearish_hits[:5],
+    }
 
-def get_news_prediction(symbol_key: str, aliases: List[str] = None, use_newsapi=True, max_headlines=25) -> Dict[str, Any]:
-    """
-    symbol_key: one of MONITORED keys e.g., 'BTC', 'CRUDE', 'GOLD', 'RELIANCE'...
-    Returns dict with numeric score and discrete prediction.
-    """
-    symbol_key = symbol_key.upper()
-    if symbol_key not in MONITORED:
-        raise KeyError(f"{symbol_key} not in monitored list")
 
-    aliases = aliases or MONITORED[symbol_key].get("aliases", [symbol_key])
-    query = " OR ".join(aliases)
+def compute_news_score(sentiment_score: float, events: Dict[str, Any]) -> float:
+    event_balance = events.get("bullish_count", 0) - events.get("bearish_count", 0)
+    event_score = max(-1.0, min(1.0, event_balance * 0.18))
+    return round((0.65 * sentiment_score) + (0.35 * event_score), 4)
 
-    # Caching: reuse shared CACHE_FILE (small TTL)
+
+def action_from_score(score: float, headlines_count: int) -> str:
+    if headlines_count == 0:
+        return ACTION_HOLD
+    if score >= 0.12:
+        return ACTION_TO_BUY
+    if score <= -0.12:
+        return ACTION_SELL
+    return ACTION_HOLD
+
+
+def confidence_from_score(score: float, headlines_count: int) -> int:
+    coverage_boost = min(20, headlines_count * 2)
+    confidence = int(min(95, 45 + abs(score) * 100 + coverage_boost))
+    if headlines_count == 0:
+        return 20
+    return max(25, confidence)
+
+
+def _reason_summary(action: str, score: float, sentiment: float, events: Dict[str, Any]) -> List[str]:
+    reasons = [f"news score {score:+.3f}", f"sentiment {sentiment:+.3f}"]
+    if events.get("bullish_count"):
+        reasons.append(f"{events['bullish_count']} bullish news event(s)")
+    if events.get("bearish_count"):
+        reasons.append(f"{events['bearish_count']} bearish news event(s)")
+    if action == ACTION_HOLD and not events.get("bullish_count") and not events.get("bearish_count"):
+        reasons.append("no strong event trigger")
+    return reasons
+
+
+def _action_to_numeric(action: str, confidence: int = 100) -> float:
+    direction = {ACTION_TO_BUY: 1.0, ACTION_HOLD: 0.0, ACTION_SELL: -1.0}.get(action, 0.0)
+    return direction * max(0.0, min(1.0, confidence / 100))
+
+
+def _cache_key(symbol_key: str, query: str, model_mode: str, enable_finbert: bool) -> str:
+    query_hash = hashlib.sha1(query.encode("utf-8")).hexdigest()[:10]
+    return f"{ENGINE_VERSION}:{symbol_key.upper()}:{model_mode}:{int(enable_finbert)}:{query_hash}"
+
+
+def _should_use_finbert(model_mode: str, enable_finbert: Optional[bool]) -> bool:
+    if enable_finbert is not None:
+        return enable_finbert
+    if model_mode == "dl":
+        return True
+    return os.environ.get("NEWS_ENABLE_FINBERT", "").lower() in {"1", "true", "yes", "on"}
+
+
+def get_news_prediction(
+    symbol_key: str,
+    aliases: Optional[List[str]] = None,
+    use_newsapi: bool = True,
+    max_headlines: int = 25,
+    assets: Optional[Dict[str, Dict[str, Any]]] = None,
+    model_mode: str = "hybrid",
+    enable_finbert: Optional[bool] = None,
+) -> Dict[str, Any]:
+    """Return a news-driven signal for one monitored stock/asset."""
+    assets = assets or MONITORED
+    symbol_key = symbol_key.upper().strip()
+    model_mode = model_mode.lower().strip()
+    if model_mode not in MODEL_MODES:
+        raise ValueError(f"Unknown model_mode '{model_mode}'. Use one of: {sorted(MODEL_MODES)}")
+
+    config = _asset_config(symbol_key, assets)
+    effective_config = dict(config)
+    if aliases is not None:
+        effective_config["aliases"] = aliases
+    query = _query_for_asset(symbol_key, effective_config)
+    use_finbert = _should_use_finbert(model_mode, enable_finbert)
+
     try:
         cache = _read_cache()
     except Exception:
         cache = {}
 
-    cache_entry = cache.get(symbol_key)
+    key = _cache_key(symbol_key, query, model_mode, use_finbert)
+    cache_entry = cache.get(key)
     if cache_entry and (time.time() - cache_entry.get("ts", 0) < CACHE_TTL):
-        logger.debug("Using cached prediction for %s", symbol_key)
         return cache_entry
 
     headlines = _get_headlines_for_query(query, use_newsapi=use_newsapi, max_items=max_headlines)
-    sentiment = 0.0
-    if headlines:
-        sentiment = score_texts(headlines)  # using VADER wrapper from news_sentiment.py
-    event_agg = detect_events_in_texts(headlines)
+    vader_sentiment = score_texts(headlines) if headlines else 0.0
+    dl_result = {"available": False, "reason": "FinBERT not requested."}
+    if model_mode in {"dl", "hybrid"} and use_finbert:
+        dl_result = score_news_with_finbert(headlines)
 
-    score = compute_combined_score(sentiment, event_agg, symbol_key)
-    # thresholds: tune via backtesting
-    threshold = 0.15
-    prediction = 0
-    if score >= threshold:
-        prediction = 1
-    elif score <= -threshold:
-        prediction = -1
-    reasons = []
-    if event_agg:
-        reasons.append(f"events:{event_agg}")
-    reasons.append(f"vader:{sentiment:.3f}")
+    sentiment = dl_result.get("score", vader_sentiment) if dl_result.get("available") else vader_sentiment
+    events = detect_stock_events(headlines)
+    rule_score = compute_news_score(sentiment, events)
+    rule_action = action_from_score(rule_score, len(headlines))
+    rule_confidence = confidence_from_score(rule_score, len(headlines))
+
+    ml_result = {"available": False, "reason": "ML classifier not requested."}
+    if model_mode in {"ml", "hybrid"}:
+        ml_result = predict_news_action_ml(headlines)
+
+    score = rule_score
+    action = rule_action
+    confidence = rule_confidence
+
+    if model_mode == "ml" and ml_result.get("available"):
+        action = ml_result["action"]
+        confidence = int(ml_result.get("confidence", rule_confidence))
+        score = round(_action_to_numeric(action, confidence), 4)
+    elif model_mode == "hybrid" and ml_result.get("available"):
+        ml_score = _action_to_numeric(ml_result["action"], int(ml_result.get("confidence", 50)))
+        score = round((0.45 * rule_score) + (0.55 * ml_score), 4)
+        action = action_from_score(score, len(headlines))
+        confidence = int(round((rule_confidence + int(ml_result.get("confidence", 50))) / 2))
+
     result = {
         "symbol": symbol_key,
-        "score": round(score, 4),
-        "prediction": prediction,
-        "reasons": reasons,
+        "name": config.get("name", symbol_key),
+        "exchange_symbol": config.get("symbol", symbol_key),
+        "asset_type": config.get("type", "stock"),
+        "action": action,
+        "prediction": {"TO_BUY": 1, "HOLD": 0, "SELL": -1}[action],
+        "score": score,
+        "confidence": confidence,
+        "reasons": _reason_summary(action, score, sentiment, events),
+        "model_mode": model_mode,
+        "models": {
+            "rules": {
+                "available": True,
+                "action": rule_action,
+                "score": rule_score,
+                "confidence": rule_confidence,
+                "sentiment_backend": "finbert" if dl_result.get("available") else "vader",
+                "vader_sentiment": round(vader_sentiment, 4),
+                "effective_sentiment": round(sentiment, 4),
+            },
+            "ml": ml_result,
+            "dl": dl_result,
+        },
+        "events": events,
         "headlines": headlines[:10],
-        "ts": int(time.time())
+        "headlines_count": len(headlines),
+        "query": query,
+        "ts": int(time.time()),
     }
+    if ml_result.get("available"):
+        result["reasons"].append(
+            f"ML classifier {ml_result['action']} at {ml_result.get('confidence', 0)}%"
+        )
+    elif model_mode in {"ml", "hybrid"}:
+        result["reasons"].append(str(ml_result.get("reason", "ML classifier unavailable.")))
 
-    cache[symbol_key] = result
+    if dl_result.get("available"):
+        result["reasons"].append(f"FinBERT sentiment {dl_result.get('score', 0):+.3f}")
+    elif model_mode == "dl" or use_finbert:
+        result["reasons"].append(str(dl_result.get("reason", "FinBERT unavailable.")))
+
+    cache[key] = result
     try:
         _write_cache(cache)
     except Exception:
-        pass
+        logger.debug("Could not write news cache", exc_info=True)
     return result
 
-# Simple CLI to fetch for all monitored symbols
+
+def analyze_watchlist(
+    assets: Optional[Dict[str, Dict[str, Any]]] = None,
+    use_newsapi: bool = True,
+    max_headlines: int = 25,
+    model_mode: str = "hybrid",
+    enable_finbert: Optional[bool] = None,
+) -> Dict[str, Any]:
+    """Analyze all watched stocks and group them for the dashboard columns."""
+    assets = assets or MONITORED
+    grouped = {action: [] for action in ACTIONS}
+    errors = []
+
+    for symbol_key in sorted(assets.keys()):
+        try:
+            signal = get_news_prediction(
+                symbol_key,
+                use_newsapi=use_newsapi,
+                max_headlines=max_headlines,
+                assets=assets,
+                model_mode=model_mode,
+                enable_finbert=enable_finbert,
+            )
+            grouped[signal["action"]].append(signal)
+        except Exception as exc:
+            errors.append({"symbol": symbol_key, "error": str(exc)})
+
+    for signals in grouped.values():
+        signals.sort(key=lambda item: (item.get("confidence", 0), abs(item.get("score", 0))), reverse=True)
+
+    return {
+        "generated_at": int(time.time()),
+        "mode": model_mode,
+        "finbert_enabled": _should_use_finbert(model_mode, enable_finbert),
+        "groups": grouped,
+        "errors": errors,
+        "counts": {action: len(grouped[action]) for action in ACTIONS},
+    }
+
+
 if __name__ == "__main__":
     import sys
+
     keys = sys.argv[1:] or list(MONITORED.keys())
-    for k in keys:
-        print(get_news_prediction(k))
+    for key in keys:
+        print(get_news_prediction(key))
