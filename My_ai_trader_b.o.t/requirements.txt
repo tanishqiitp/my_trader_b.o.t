@@ -5,3 +5,5 @@ vaderSentiment
 fastapi
 uvicorn
 streamlit
+scikit-learn
+joblib

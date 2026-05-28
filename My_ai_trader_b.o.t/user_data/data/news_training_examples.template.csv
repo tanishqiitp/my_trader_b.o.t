@@ -1,0 +1,10 @@
+text,label
+"Company beats estimates, reports strong revenue growth and announces dividend",TO_BUY
+"Company wins a large multi-year contract from a global client",TO_BUY
+"Brokerage upgrades the stock and raises target price after strong results",TO_BUY
+"Company reports stable quarterly results in line with expectations",HOLD
+"Analysts remain neutral as demand outlook is mixed",HOLD
+"Company says business is steady but near-term growth remains muted",HOLD
+"Company misses estimates as profit falls and revenue declines",SELL
+"Regulator imposes penalty and opens investigation into the company",SELL
+"Brokerage downgrades the stock after weak demand and margin pressure",SELL
